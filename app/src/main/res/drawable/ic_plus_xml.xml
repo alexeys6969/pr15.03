@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/blue"/>
+            <corners android:topLeftRadius="16dp"
+                android:bottomRightRadius="16dp"/>
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/ic_plus"
+        android:width="21dp"
+        android:height="15dp"
+        android:gravity="center"/>
+</layer-list>

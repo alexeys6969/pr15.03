@@ -5,5 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Recycler_view_shashin" parent="Base.Theme.Recycler_view_shashin" />
+    <style name="Theme.Recycler_view_shashin" parent="Base.Theme.Recycler_view_shashin">
+        <item name="colorPrimaryDark">@color/blue</item>
+    </style>
 </resources>
