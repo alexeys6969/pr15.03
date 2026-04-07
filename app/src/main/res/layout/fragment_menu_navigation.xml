@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="108dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/ic_bottom_navigation"
+    tools:context=".MenuNavigation">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/ic_basket_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bthHome"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_heart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bthHome"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bthUser"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ic_notification"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bthUser"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
