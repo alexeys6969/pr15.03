@@ -77,4 +77,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(newIntent);
         }
     };
+    public void OpenBasketView(View view) {
+        Intent newIntent = new Intent(this, BasketActivity.class);
+        startActivity(newIntent);
+    }
 }

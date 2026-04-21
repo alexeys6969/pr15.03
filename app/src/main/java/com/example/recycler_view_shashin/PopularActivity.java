@@ -74,11 +74,9 @@ public class PopularActivity extends AppCompatActivity {
             TvNamePage.setText(SelectCategory.Name);
 
             Items = ItemContext.GetByCategory(SelectCategory.Id);
-            ItemAdapter CardAdapter = new ItemAdapter(Context, Items);
+            ItemAdapter CardAdapter = new ItemAdapter(Context, Items, MainActivity.init.AddBasket);
             CardList.setAdapter(CardAdapter);
         }
     };
     public void OnClosePopularActivity(View view) { finish(); }
 }
-
-// !!!sddd
