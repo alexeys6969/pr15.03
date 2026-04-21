@@ -35,10 +35,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         holder.TvName.setText(Item.Name);
         holder.TvModel.setText(Item.Model);
         holder.TvPrice.setText("₽" + String.valueOf(Item.Price));
+        final int currentPosition = position;
         holder.bthAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddBasket.setClick(view, Item.Id);
+                AddBasket.setClick(view, currentPosition);
             }
         });
     }

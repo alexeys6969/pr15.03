@@ -21,54 +21,69 @@ public class MainActivity extends AppCompatActivity {
     public static MainActivity init;
     public ArrayList<Basket> BasketList = new ArrayList<>();
     public ArrayList<Item> Items;
+
+    // Обработчик добавления в корзину
     public iOnClickInterface AddBasket = new iOnClickInterface() {
         @Override
         public void setClick(View view, int position) {
-            Basket Item = BasketList.stream()
-                    .filter(item -> item.Item.Id == position)
-                        .findAny()
-                            .orElse(null);
-            Item FindItem = Items.stream().filter(item -> item.Id == position)
-                    .findAny()
-                    .orElse(null);
-            if(Item == null) {
-                Item = new Basket(FindItem, 1);
-                BasketList.add(Item);
-            } else {
-                Item.Count++;
+            Item selectedItem = Items.get(position);  // ✅ Теперь position правильная!
+
+            // Ищем существующий товар в корзине
+            Basket existingItem = null;
+            for (Basket basket : BasketList) {
+                if (basket.Item.Id == selectedItem.Id) {
+                    existingItem = basket;
+                    break;
+                }
             }
-            Toast.makeText(Context, "Товар добавлен в корзину", Toast.LENGTH_SHORT).show();
+
+            if (existingItem != null) {
+                existingItem.Count++;
+                Toast.makeText(Context, "Добавлена ещё одна единица: " + selectedItem.Name + " " + selectedItem.Model, Toast.LENGTH_SHORT).show();
+            } else {
+                Basket newBasketItem = new Basket(selectedItem, 1);
+                BasketList.add(newBasketItem);
+                Toast.makeText(Context, "Добавлен новый товар: " + selectedItem.Name + " " + selectedItem.Model, Toast.LENGTH_SHORT).show();
+            }
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
         Context = this;
-        init = this;
+        init = this; // Статическая ссылка для доступа из других классов
+
+        // Загружаем данные
         ArrayList<Category> Categorys = CategoryContext.All();
         Items = ItemContext.All();
 
+        // Настройка категорий
         RecyclerView CategoryList = findViewById(R.id.category_list);
+        CategoryAdapter categoryAdapter = new CategoryAdapter(this, Categorys, Click);
+        CategoryList.setAdapter(categoryAdapter);
+
+        // Настройка товаров
         RecyclerView CardList = findViewById(R.id.card_list);
+        ItemAdapter cardAdapter = new ItemAdapter(this, Items, AddBasket);
+        CardList.setAdapter(cardAdapter);
 
-        CategoryAdapter CategoryAdapter = new CategoryAdapter(this, Categorys, Click);
-        CategoryList.setAdapter(CategoryAdapter);
-
-        ItemAdapter CardAdapter = new ItemAdapter(this, Items, AddBasket);
-        CardList.setAdapter(CardAdapter);
-
+        // Меню навигации
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         MenuNavigation fragment = new MenuNavigation();
         ft.add(R.id.menu_navigation, fragment);
         ft.commit();
     }
+
     public void OpenPopularView(View view) {
         Intent newIntent = new Intent(this, PopularActivity.class);
         newIntent.putExtra("Category", -1);
         startActivity(newIntent);
     }
+
     iOnClickInterface Click = new iOnClickInterface() {
         @Override
         public void setClick(View view, int position) {
@@ -77,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(newIntent);
         }
     };
+
     public void OpenBasketView(View view) {
         Intent newIntent = new Intent(this, BasketActivity.class);
         startActivity(newIntent);

@@ -33,7 +33,12 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder
     @Override
     public void onBindViewHolder(BasketAdapter.ViewHolder holder, int position) {
         Basket Item = BasketItems.get(position);
-        holder.tvName.setText(Item.Item.Name);
+
+        // ✅ Отображаем и название, и модель
+        holder.tvName.setText(Item.Item.Name + " " + Item.Item.Model);  // "STREETBEAT Universum"
+        // ИЛИ если нужно в две строки:
+        // holder.tvName.setText(Item.Item.Name + "\n" + Item.Item.Model);
+
         holder.tvPrice.setText("₽" + String.valueOf(Item.Item.Price));
         holder.tvCount.setText(String.valueOf(Item.Count));
 
@@ -45,14 +50,18 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder
                 Cost.setClick(view, position);
             }
         });
+
         holder.bthMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Item.Count--;
-                holder.tvCount.setText(String.valueOf(Item.Count));
-                Cost.setClick(view, position);
+                if (Item.Count > 1) {  // ✅ Защита от отрицательного количества
+                    Item.Count--;
+                    holder.tvCount.setText(String.valueOf(Item.Count));
+                    Cost.setClick(view, position);
+                }
             }
         });
+
         holder.bthDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

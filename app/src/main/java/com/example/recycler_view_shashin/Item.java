@@ -6,7 +6,8 @@ public class Item {
     public String Model;
     public Integer Price;
     public Integer IdCategory;
-    public Item(String name, String model, Integer price, Integer idCategory) {
+    public Item(int id, String name, String model, Integer price, Integer idCategory) {
+        this.Id = id;
         this.Name = name;
         this.Model = model;
         this.Price = price;
