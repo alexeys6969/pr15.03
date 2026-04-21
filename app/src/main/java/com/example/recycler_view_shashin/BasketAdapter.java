@@ -14,7 +14,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter>.ViewHolder {
+public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder> {
     public iOnClickInterface Delete, Cost;
     public LayoutInflater Inflater;
     public ArrayList<Basket> BasketItems;
