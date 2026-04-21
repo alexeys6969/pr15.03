@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp">
+
+        <LinearLayout
+            android:id="@+id/ll_count"
+            android:layout_width="58dp"
+            android:layout_height="104dp"
+            android:paddingTop="14dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/background_add"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/bthPlus"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginLeft="22dp"
+                android:src="@drawable/ic_plus"/>
+
+            <TextView
+                android:id="@+id/tv_count"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:textColor="@color/white"
+                android:layout_marginTop="15dp"
+                android:text="1"
+                android:gravity="center"/>
+
+            <ImageView
+                android:id="@+id/bthMinus"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="22dp"
+                android:src="@drawable/ic_minus"/>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="108dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/item_category_background"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="87dp"
+                android:layout_height="85dp"
+                android:layout_marginRight="9dp"
+                android:background="@drawable/item_background"
+                android:src="@drawable/ic_item"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Nike Club Max"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="9dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="₽584.95"
+                android:layout_marginTop="9dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="9dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_delete"
+            android:layout_width="58dp"
+            android:layout_height="104dp"
+            android:background="@drawable/background_delete"
+            android:visibility="gone"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
