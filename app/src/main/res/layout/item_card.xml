@@ -68,6 +68,7 @@
             android:text=""/>
 
         <LinearLayout
+            android:id="@+id/bthAdd"
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:background="@drawable/ic_plus_xml"/>
